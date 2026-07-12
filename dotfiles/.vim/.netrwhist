@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/paul/dev/workshops/cs2030s/py2-shororxor/2425-s2/Q2'
+let g:netrw_dirhist_9='/home/paul/dev/source-academy/workspace/frontend/node_modules/js-slang/dist/editors/ace/theme'
+let g:netrw_dirhist_8='/home/paul/dev/source-academy/workspace/frontend/node_modules/js-slang/dist/editors/ace/modes'
+let g:netrw_dirhist_7='/home/paul/dev/source-academy/workspace/frontend/node_modules/js-slang/dist/editors/ace'
+let g:netrw_dirhist_6='/home/paul/dev/source-academy/workspace/frontend/node_modules/js-slang/dist/editors'
+let g:netrw_dirhist_5='/home/paul/dev/source-academy/workspace/frontend/node_modules/js-slang/dist'
+let g:netrw_dirhist_4='/home/paul/dev/source-academy/workspace/frontend/node_modules/js-slang'
+let g:netrw_dirhist_3='/home/paul/dev/source-academy/workspace/frontend'
+let g:netrw_dirhist_2='/home/paul/dev/source-academy/workspace/modules'
+let g:netrw_dirhist_1='/home/paul/dev/source-academy/workspace/frontend/node_modules'
