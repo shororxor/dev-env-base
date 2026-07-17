@@ -10,6 +10,7 @@ links[".vim"]="$HOME/.vim"
 links[".tmux.conf"]="$HOME/.tmux.conf"
 links[".tmux"]=$HOME/.tmux
 links[".config/opencode/tui.json"]="$HOME/.config/opencode/tui.json"
+links[".config/omp"]="$HOME/.config/omp"
 
 for src in "${!links[@]}"; do
     dest="${links[$src]}"
@@ -21,3 +22,5 @@ for src in "${!links[@]}"; do
         echo "$dest setup successfully."
     fi
 done
+
+export DOTFILES=$SCRIPT_DIR/dotfiles

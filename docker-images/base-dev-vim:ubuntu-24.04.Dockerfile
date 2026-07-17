@@ -29,7 +29,7 @@ ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
 # Create user and workspace
-ARG USERNAME=paul
+ARG USERNAME
 RUN useradd -ms /bin/bash ${USERNAME} \
     && usermod -aG sudo ${USERNAME} \
     && echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/${USERNAME}
@@ -56,8 +56,13 @@ RUN brew install opencode
 RUN brew install tmux
 
 # Copy config files
-COPY .config/omp/custom_theme.json ${HOME}/.config/
-COPY .tmux.conf ${HOME}/
+ARG DOTFILES
+COPY ${DOTFILES}/.vim ${HOME}/.vim
+COPY ${DOTFILES}/.vimrc ${HOME}/
+COPY ${DOTFILES}/.config/opencode ${HOME}/.config/opencode
+COPY ${DOTFILES}/.config/omp ${HOME}/.config/omp
+COPY ${DOTFILES}/.tmux.conf ${HOME}/
+COPY ${DOTFILES}/.tmux ${HOME}/.tmux
 
 # Install oh-my-posh
 RUN grep -q '\.local/bin' ~/.bashrc 2>/dev/null || echo 'export PATH="${HOME}/.local/bin:${PATH}"' >> ~/.bashrc
@@ -82,7 +87,5 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
     pkg-config \
     libssl-dev \
     && sudo rm -rf /var/lib/apt/lists/*
-
-RUN mkdir -p ${HOME}/workspace && ln -s /workspace ${HOME}/workspace
 
 CMD ["bash"]

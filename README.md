@@ -30,13 +30,15 @@ Images are built from `docker-images/*.Dockerfile`. Two flavours are available:
 ### Build locally
 
 ```bash
-docker build -t base-dev:ubuntu-24.04 -f docker-images/base-dev:ubuntu-24.04.Dockerfile ~/
+docker build --tag shororxor/base-dev-vim:ubuntu-24.04 \
+             --file docker-images/base-dev-vim:ubuntu-24.04.Dockerfile \
+             --build-arg USERNAME=$USER DOTFILES=$DOTFILES /
 ```
 
 ### Publish to Docker Hub
 
 ```bash
 docker login
-docker tag base-dev:ubuntu-24.04 shororxor/base-dev:ubuntu-24.04
-docker push shororxor/base-dev:ubuntu-24.04
+docker tag shororxor/base-dev-vim:ubuntu-24.04 shororxor/base-dev-vim:ubuntu-24.04
+docker push shororxor/base-dev-vim:ubuntu-24.04
 ```

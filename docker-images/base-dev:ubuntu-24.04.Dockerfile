@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     xsel \
     xclip \
+    vim \
     && rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US.UTF-8
@@ -29,7 +30,7 @@ ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
 # Create user and workspace
-ARG USERNAME=paul
+ARG USERNAME
 RUN useradd -ms /bin/bash ${USERNAME} \
     && usermod -aG sudo ${USERNAME} \
     && echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/${USERNAME}
@@ -54,4 +55,7 @@ else \
 fi
 
 # COPY config files
-COPY .config/omp/custom_theme.json ${HOME}/.config
+ARG DOTFILES
+COPY ${DOTFILES}/.vim ${HOME}/.vim
+COPY ${DOTFILES}/.vimrc ${HOME}/
+COPY ${DOTFILES}/.config/omp ${HOME}/.config/omp
